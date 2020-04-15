@@ -18,9 +18,9 @@ const MongoDB = require('../../../lib/frameworks_drivers/database/MongoDB');
 
 MongoDB('testsymptomecovid19');
 
-describe('GetUser', () => {
+describe('VerifyAccessToken', () => {
 
-    const username = "test";
+    const username = "testverifytoken";
     const password = "123456";
     let userCreated = null;
     let token = null;

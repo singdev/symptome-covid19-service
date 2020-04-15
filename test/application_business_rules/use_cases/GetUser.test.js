@@ -15,7 +15,7 @@ MongoDB('testsymptomecovid19');
 
 describe('GetUser', () => {
 
-    const username = "test";
+    const username = "testgetuser";
     const password = "123456";
     let userCreated = null;
     let userFind = null;

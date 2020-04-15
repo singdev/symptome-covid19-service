@@ -14,9 +14,9 @@ MongoDB('testsymptomecovid19')
 
 const UserModel = require('../../../lib/frameworks_drivers/database/models/UserModel')
 
-describe('Should create a new user with hashed password and same username', () => {
+describe('CreateUser', () => {
 
-    const persistedUser = new User('test', '123456');
+    const persistedUser = new User('testusercreate', '123456');
     let user = null; 
 
     before(async () => {
@@ -38,7 +38,7 @@ describe('Should create a new user with hashed password and same username', () =
        expect(user.username).to.equal(persistedUser.username);
     })
 
-    it("Le mot de passe de l'utilisateur doit être crypté, donc différent de celui entré", () => {
+    it("Le mot de passe de l'utilisateur doit être identique à celui de l'utilisateur", () => {
         expect(user.password).to.equal(persistedUser.password);
     })
 })
