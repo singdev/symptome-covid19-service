@@ -3,7 +3,7 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-describe('Server response at hello world request', function(){
+describe('Server Is Launch', function(){
 
     let responseBody = {};
     let responseStatus = null;

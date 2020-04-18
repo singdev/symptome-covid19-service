@@ -2,18 +2,21 @@ const axios = require('axios')
 const chai = require('chai');
 const User = require('../../lib/enterprise_business_rules/entities/User')
 
+const UserModel = require('../../lib/frameworks_drivers/database/models/UserModel');
+
 const expect = chai.expect;
 
-describe('User controller test', function(){
+describe('Create User controller test', function(){
 
     let responseBody = {};
     let responseStatus = null;
 
     let responseStatusForNoPassword = null;
 
-    const user = new User("orphee6", "123456")
+    const user = new User("test2", "123456")
 
     before( async () => {
+
         const response = await axios.post('http://127.0.0.1:20201/users', {
             username: user.username,
             password: user.password
@@ -21,12 +24,6 @@ describe('User controller test', function(){
 
         responseStatus = response.status;
         responseBody =   response.data;
-
-        const response2 = await axios.post('http://127.0.0.1:20201/users', {
-            username: "nopassworduser",
-        });
-
-        responseStatusForNoPassword = response2.status;
     })
 
     it('#Response 200', () => {
@@ -48,9 +45,4 @@ describe('User controller test', function(){
     it('#Response Contain new User password encrypted', () => {
         expect(responseBody['newUser'].password).to.not.equal(user.password)
     }) 
-  
-    it('#Response 401 because no password', () => {
-        expect(responseStatusForNoPassword).to.equal(401)
-    })
-
 })
